@@ -20,3 +20,35 @@
     <%= password_field_tag :passowrd %><br /><br />
     <%= submit_tag "Submit" %>
 <%end%>
+<br><br>
+<h3>Rails form_for</h3>
+<%= form_for @user do |f| %>
+    <% if @user.errors[:name].any? %>
+    <ul>
+        <% @user.errors[:name].each do |message|%>
+        <li>Username <%= message %></li>
+        <% end %>
+    </ul>
+    <% end %>
+    Name:<%= f.text_field :name %><br /><br />
+
+    <% if @user.errors[:email].any? %>
+    <ul>
+        <% @user.errors[:email].each do |message|%>
+        <li>E-mail <%= message %></li>
+        <% end %>
+    </ul>
+    <% end %>
+    E-mail:<%= f.email_field :email %><br /><br />
+
+    <% if @user.errors[:passowrd].any? %>
+    <ul>
+        <% @user.errors[:passowrd].each do |message|%>
+        <li>Passowrd <%= message %></li>
+        <% end %>
+    </ul>
+    <% end %>
+    Passowrd:<%= f.password_field :passowrd %><br /><br />
+  
+    <%= f.submit %>
+<% end %>
